@@ -61,7 +61,8 @@ describe('MetaMaskInpageProvider: Miscellanea', () => {
 
       expect(
         () => new MetaMaskInpageProvider(stream, null),
-      ).toThrow('Cannot destructure property `logger` of \'undefined\' or \'null\'')
+      // ).toThrow('Cannot destructure property `logger` of \'undefined\' or \'null\'')
+      ).toThrow('Cannot read property \'logger\' of null')
 
       expect(
         () => new MetaMaskInpageProvider(stream, {
