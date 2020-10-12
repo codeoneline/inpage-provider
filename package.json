@@ -1,6 +1,6 @@
 {
-  "name": "@metamask/inpage-provider",
-  "version": "7.0.0",
+  "name": "@wanchainmask/inpage-provider",
+  "version": "6.4.0",
   "description": "A JavaScript Ethereum provider that connects over a WebExtension port.",
   "main": "index.js",
   "type": "index.d.ts",

@@ -22,7 +22,7 @@ export interface MetaMaskInpageProviderOptions {
   shouldSendMetadata?: boolean;
 }
 
-export class MetaMaskInpageProvider extends EventEmitter {
+export class WanchainMaskInpageProvider extends EventEmitter {
 
   /**
    * @param connectionStream - A Node.js duplex stream.
@@ -97,7 +97,7 @@ export class MetaMaskInpageProvider extends EventEmitter {
 }
 
 /**
- * Initializes a MetaMaskInpageProvider and (optionally) assigns it as window.ethereum.
+ * Initializes a WanchainMaskInpageProvider and (optionally) assigns it as window.ethereum.
  * @returns The initialized provider (whether set or not).
  */
 export function initProvider (
@@ -112,7 +112,7 @@ export function initProvider (
      */
     shouldSetOnWindow?: boolean;
   }
-): MetaMaskInpageProvider;
+): WanchainMaskInpageProvider;
 
 /**
  * Sets the given provider instance as window.ethereum and dispatches
@@ -120,7 +120,7 @@ export function initProvider (
  *
  * @param providerInstance - The provider instance.
  */
-export function setGlobalProvider (providerInstance: MetaMaskInpageProvider): void;
+export function setGlobalProvider (providerInstance: WanchainMaskInpageProvider): void;
 
 export interface RequestArguments {
 

@@ -1,14 +1,14 @@
-const MetaMaskInpageProvider = require('./MetaMaskInpageProvider')
+const WanchainMaskInpageProvider = require('./WanchainMaskInpageProvider')
 
 /**
- * Initializes a MetaMaskInpageProvider and (optionally) assigns it as window.ethereum.
+ * Initializes a WanchainMaskInpageProvider and (optionally) assigns it as window.wanchain.
  *
  * @param {Object} options - An options bag.
  * @param {Object} options.connectionStream - A Node.js stream.
  * @param {number} options.maxEventListeners - The maximum number of event listeners.
  * @param {boolean} options.shouldSendMetadata - Whether the provider should send page metadata.
- * @param {boolean} options.shouldSetOnWindow - Whether the provider should be set as window.ethereum
- * @returns {MetaMaskInpageProvider | Proxy} The initialized provider (whether set or not).
+ * @param {boolean} options.shouldSetOnWindow - Whether the provider should be set as window.wanchain
+ * @returns {WanchainMaskInpageProvider | Proxy} The initialized provider (whether set or not).
  */
 function initProvider ({
   connectionStream,
@@ -17,7 +17,7 @@ function initProvider ({
   shouldSetOnWindow = true,
 } = {}) {
 
-  let provider = new MetaMaskInpageProvider(
+  let provider = new WanchainMaskInpageProvider(
     connectionStream, { shouldSendMetadata, maxEventListeners },
   )
 
@@ -33,14 +33,14 @@ function initProvider ({
 }
 
 /**
- * Sets the given provider instance as window.ethereum and dispatches the
- * 'ethereum#initialized' event on window.
+ * Sets the given provider instance as window.wanchain and dispatches the
+ * 'wanchain#initialized' event on window.
  *
- * @param {MetaMaskInpageProvider} providerInstance - The provider instance.
+ * @param {WanchainMaskInpageProvider} providerInstance - The provider instance.
  */
 function setGlobalProvider (providerInstance) {
-  window.ethereum = providerInstance
-  window.dispatchEvent(new Event('ethereum#initialized'))
+  window.wanchain = providerInstance
+  window.dispatchEvent(new Event('wanchain#initialized'))
 }
 
 module.exports = {

@@ -1,4 +1,4 @@
-const MetaMaskInpageProvider = require('../src/MetaMaskInpageProvider')
+const WanchainMaskInpageProvider = require('../src/WanchainMaskInpageProvider')
 const messages = require('../src/messages')
 
 const MockDuplexStream = require('./mocks/DuplexStream')
@@ -8,14 +8,14 @@ const MOCK_ERROR_MESSAGE = 'Did you specify a mock return value?'
 function initProvider () {
   jest.useFakeTimers()
   const mockStream = new MockDuplexStream()
-  const provider = new MetaMaskInpageProvider(mockStream)
+  const provider = new WanchainMaskInpageProvider(mockStream)
   provider.mockStream = mockStream
   provider.autoRefreshOnNetworkChange = false
   jest.runAllTimers()
   return provider
 }
 
-describe('MetaMaskInpageProvider: RPC', () => {
+describe('WanchainMaskInpageProvider: RPC', () => {
 
   // mocking the underlying stream, and testing the basic functionality of
   // .reqest, .sendAsync, and .send
