@@ -70,7 +70,7 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
 
     super()
 
-    this.isMetaMask = true
+    this.isWanchainMask = true
 
     this.setMaxListeners(maxEventListeners)
 
@@ -123,11 +123,11 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
       connectionStream,
       mux,
       connectionStream,
-      this._handleDisconnect.bind(this, 'MetaMask'),
+      this._handleDisconnect.bind(this, 'WanchainMask'),
     )
 
     // subscribe to metamask public config (one-way)
-    this._publicConfigStore = new ObservableStore({ storageKey: 'MetaMask-Config' })
+    this._publicConfigStore = new ObservableStore({ storageKey: 'WanchainMask-Config' })
 
     // handle isUnlocked changes, and chainChanged and networkChanged events
     this._publicConfigStore.subscribe((state) => {
@@ -167,7 +167,7 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
       mux.createStream('publicConfig'),
       asStream(this._publicConfigStore),
       // RPC requests should still work if only this stream fails
-      logStreamDisconnectWarning.bind(this, log, 'MetaMask PublicConfigStore'),
+      logStreamDisconnectWarning.bind(this, log, 'WanchainMask PublicConfigStore'),
     )
 
     // ignore phishing warning message (handled elsewhere)
@@ -187,7 +187,7 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
       jsonRpcConnection.stream,
       mux.createStream('provider'),
       jsonRpcConnection.stream,
-      this._handleDisconnect.bind(this, 'MetaMask RpcProvider'),
+      this._handleDisconnect.bind(this, 'WanchainMask RpcProvider'),
     )
 
     // handle RPC requests via dapp-side rpc engine
@@ -239,7 +239,7 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
     this._web3Ref = undefined
 
     // TODO:deprecation:remove
-    // if true, MetaMask reloads the page if window.web3 has been accessed
+    // if true, WanchainMask reloads the page if window.web3 has been accessed
     /** @deprecated */
     this.autoRefreshOnNetworkChange = true
 
@@ -451,7 +451,7 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
 
     if (!Array.isArray(accounts)) {
       log.error(
-        'MetaMask: Received non-array accounts parameter. Please report this bug.',
+        'WanchainMask: Received non-array accounts parameter. Please report this bug.',
         accounts,
       )
       _accounts = []
@@ -464,7 +464,7 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
       // returns, except in cases where isInternal is true
       if (isEthAccounts && this._state.accounts !== undefined && !isInternal) {
         log.error(
-          `MetaMask: 'eth_accounts' unexpectedly updated accounts. Please report this bug.`,
+          `WanchainMask: 'eth_accounts' unexpectedly updated accounts. Please report this bug.`,
           _accounts,
         )
       }
@@ -514,9 +514,9 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
       {
 
         /**
-         * Determines if MetaMask is unlocked by the user.
+         * Determines if WanchainMask is unlocked by the user.
          *
-         * @returns {Promise<boolean>} - Promise resolving to true if MetaMask is currently unlocked
+         * @returns {Promise<boolean>} - Promise resolving to true if WanchainMask is currently unlocked
          */
         isUnlocked: async () => {
           if (this._state.isUnlocked === undefined) {
@@ -616,7 +616,7 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
   }
 
   /**
-   * Sends an RPC request to MetaMask.
+   * Sends an RPC request to WanchainMask.
    * Many different return types, which is why this method should not be used.
    *
    * @deprecated

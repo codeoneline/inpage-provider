@@ -1,30 +1,30 @@
-# MetaMask Inpage Provider
+# WanchainMask Inpage Provider
 
-The inpage Ethereum provider object injected by MetaMask into web pages.
-Contains a lot of implementation details specific to MetaMask, and is probably
+The inpage Wanchain provider object injected by WanchainMask into web pages.
+Contains a lot of implementation details specific to WanchainMask, and is probably
 not suitable for out-of-the-box use with other wallets.
 
 ## Installation
 
-`yarn add @metamask/inpage-provider`
+`yarn add @wanchainmask/inpage-provider`
 
 ## Usage
 
 ```javascript
-import { initProvider } from '@metamask/inpage-provider'
+import { initProvider } from '@wanchainmask/inpage-provider'
 
 // Create a stream to a remote provider:
-const metamaskStream = new LocalMessageDuplexStream({
+const wanchainMaskStream = new LocalMessageDuplexStream({
   name: 'inpage',
   target: 'contentscript',
 })
 
-// this will initialize the provider and set it as window.ethereum
+// this will initialize the provider and set it as window.wanchain
 initProvider({
-  connectionStream: metamaskStream,
+  connectionStream: wanchainMaskStream,
 })
 
-const { ethereum } = window
+const { wanchain } = window
 ```
 
 ### Do Not Modify the Provider

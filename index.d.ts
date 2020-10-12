@@ -74,7 +74,7 @@ export class WanchainMaskInpageProvider extends EventEmitter {
   /**
    * Indicating that this provider is a MetaMask provider.
    */
-  readonly isMetaMask: true;
+  readonly isWanchainMask: true;
 
   /**
    * The user's currently selected Ethereum address.

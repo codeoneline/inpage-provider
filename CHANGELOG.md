@@ -113,7 +113,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix `ethereum.send` return value for certain argument combination
   - Reverted to pre-`4.0.0` state
 - Stop protecting overwrites of the following properties, that existed prior to `4.0.0`:
-  - `ethereum.isMetaMask`
+  - `ethereum.isWanchainMask`
   - `ethereum._metamask`
 - Protect the following new, private properties required for `ethereum.request` to work:
   - `ethereum._rpcRequest`
@@ -126,7 +126,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Rename package to [@metamask/inpage-provider](https://www.npmjs.com/package/@metamask/inpage-provider)
 - Prevent overwrite of certain properties on the Provider
   - `ethereum.request`
-  - `ethereum.isMetaMask`
+  - `ethereum.isWanchainMask`
   - `ethereum._metamask`
 
 ## [5.0.0] - 2020-04-22

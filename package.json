@@ -12,21 +12,21 @@
     "prepublishOnly": "yarn require-clean-git && yarn lint && yarn test",
     "require-clean-git": "git diff --quiet || (echo 'Please clean the working directory.' && exit 1)"
   },
-  "author": "MetaMask",
+  "author": "codeoneline",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/MetaMask/inpage-provider.git"
+    "url": "git+ssh://git@github.com/WanchainMask/inpage-provider.git"
   },
   "keywords": [
-    "MetaMask",
+    "WanchainMask",
     "Ethereum",
     "Provider"
   ],
   "bugs": {
-    "url": "https://github.com/MetaMask/inpage-provider/issues"
+    "url": "https://github.com/WanchainMask/inpage-provider/issues"
   },
-  "homepage": "https://github.com/MetaMask/inpage-provider#readme",
+  "homepage": "https://github.com/WanchainMask/inpage-provider#readme",
   "files": [
     "src/",
     "index.d.ts"
