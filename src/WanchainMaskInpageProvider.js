@@ -481,11 +481,11 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
       if (this._web3Ref) {
         this._web3Ref.defaultAccount = this.selectedAddress
       } else if (
-        window.web3 &&
-        window.web3.eth &&
-        typeof window.web3.eth === 'object'
+        window.wanWeb3 &&
+        window.wanWeb3.eth &&
+        typeof window.wanWeb3.eth === 'object'
       ) {
-        window.web3.eth.defaultAccount = this.selectedAddress
+        window.wanWeb3.eth.defaultAccount = this.selectedAddress
       }
 
       // only emit the event once all state has been updated
