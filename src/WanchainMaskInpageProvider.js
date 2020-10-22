@@ -164,14 +164,14 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
     })
 
     pump(
-      mux.createStream('publicConfig'),
+      mux.createStream('publicConfig3'),
       asStream(this._publicConfigStore),
       // RPC requests should still work if only this stream fails
       logStreamDisconnectWarning.bind(this, log, 'WanchainMask PublicConfigStore'),
     )
 
     // ignore phishing warning message (handled elsewhere)
-    mux.ignoreStream('phishing')
+    mux.ignoreStream('phishing3')
 
     // setup own event listeners
 
@@ -185,7 +185,7 @@ module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
     const jsonRpcConnection = createJsonRpcStream()
     pump(
       jsonRpcConnection.stream,
-      mux.createStream('provider'),
+      mux.createStream('provider3'),
       jsonRpcConnection.stream,
       this._handleDisconnect.bind(this, 'WanchainMask RpcProvider'),
     )
