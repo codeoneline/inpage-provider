@@ -61,8 +61,7 @@ describe('WanchainMaskInpageProvider: Miscellanea', () => {
 
       expect(
         () => new WanchainMaskInpageProvider(stream, null),
-      // ).toThrow('Cannot destructure property `logger` of \'undefined\' or \'null\'')
-      ).toThrow('Cannot read property \'logger\' of null')
+      ).toThrow('Cannot destructure property `logger` of \'undefined\' or \'null\'')
 
       expect(
         () => new WanchainMaskInpageProvider(stream, {
