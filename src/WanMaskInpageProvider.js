@@ -32,7 +32,7 @@ let log
  * @property {function} warn - Like console.warn
  */
 
-module.exports = class WanchainMaskInpageProvider extends SafeEventEmitter {
+module.exports = class WanMaskInpageProvider extends SafeEventEmitter {
 
   /**
    * @param {Object} connectionStream - A Node.js duplex stream

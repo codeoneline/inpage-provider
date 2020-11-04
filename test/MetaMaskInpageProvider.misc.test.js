@@ -1,9 +1,9 @@
-const WanchainMaskInpageProvider = require('../src/WanchainMaskInpageProvider')
+const WanMaskInpageProvider = require('../src/WanMaskInpageProvider')
 const messages = require('../src/messages')
 
 const MockDuplexStream = require('./mocks/DuplexStream')
 
-describe('WanchainMaskInpageProvider: Miscellanea', () => {
+describe('WanMaskInpageProvider: Miscellanea', () => {
 
   describe('constructor', () => {
 
@@ -16,26 +16,26 @@ describe('WanchainMaskInpageProvider: Miscellanea', () => {
     })
 
     it('succeeds if stream is provided', () => {
-      expect(() => new WanchainMaskInpageProvider(new MockDuplexStream())).not.toThrow()
+      expect(() => new WanMaskInpageProvider(new MockDuplexStream())).not.toThrow()
     })
 
     it('succeeds if stream and valid options are provided', () => {
       const stream = new MockDuplexStream()
 
       expect(
-        () => new WanchainMaskInpageProvider(stream, {
+        () => new WanMaskInpageProvider(stream, {
           maxEventListeners: 10,
         }),
       ).not.toThrow()
 
       expect(
-        () => new WanchainMaskInpageProvider(stream, {
+        () => new WanMaskInpageProvider(stream, {
           shouldSendMetadata: false,
         }),
       ).not.toThrow()
 
       expect(
-        () => new WanchainMaskInpageProvider(stream, {
+        () => new WanMaskInpageProvider(stream, {
           maxEventListeners: 10,
           shouldSendMetadata: false,
         }),
@@ -44,15 +44,15 @@ describe('WanchainMaskInpageProvider: Miscellanea', () => {
 
     it('throws if no or invalid stream is provided', () => {
       expect(
-        () => new WanchainMaskInpageProvider(),
+        () => new WanMaskInpageProvider(),
       ).toThrow(messages.errors.invalidDuplexStream())
 
       expect(
-        () => new WanchainMaskInpageProvider('foo'),
+        () => new WanMaskInpageProvider('foo'),
       ).toThrow(messages.errors.invalidDuplexStream())
 
       expect(
-        () => new WanchainMaskInpageProvider({}),
+        () => new WanMaskInpageProvider({}),
       ).toThrow(messages.errors.invalidDuplexStream())
     })
 
@@ -60,18 +60,18 @@ describe('WanchainMaskInpageProvider: Miscellanea', () => {
       const stream = new MockDuplexStream()
 
       expect(
-        () => new WanchainMaskInpageProvider(stream, null),
+        () => new WanMaskInpageProvider(stream, null),
       ).toThrow('Cannot destructure property `logger` of \'undefined\' or \'null\'')
 
       expect(
-        () => new WanchainMaskInpageProvider(stream, {
+        () => new WanMaskInpageProvider(stream, {
           maxEventListeners: 10,
           shouldSendMetadata: 'foo',
         }),
       ).toThrow(messages.errors.invalidOptions(10, 'foo'))
 
       expect(
-        () => new WanchainMaskInpageProvider(stream, {
+        () => new WanMaskInpageProvider(stream, {
           maxEventListeners: 'foo',
           shouldSendMetadata: true,
         }),
@@ -90,7 +90,7 @@ describe('WanchainMaskInpageProvider: Miscellanea', () => {
       }
 
       expect(
-        () => new WanchainMaskInpageProvider(stream, {
+        () => new WanMaskInpageProvider(stream, {
           logger: customLogger,
         }),
       ).not.toThrow()
@@ -100,7 +100,7 @@ describe('WanchainMaskInpageProvider: Miscellanea', () => {
       const stream = new MockDuplexStream()
 
       expect(
-        () => new WanchainMaskInpageProvider(stream, {
+        () => new WanMaskInpageProvider(stream, {
           logger: 'foo',
         }),
       ).toThrow(messages.errors.invalidLoggerObject())
@@ -118,7 +118,7 @@ describe('WanchainMaskInpageProvider: Miscellanea', () => {
       }
 
       expect(
-        () => new WanchainMaskInpageProvider(stream, {
+        () => new WanMaskInpageProvider(stream, {
           logger: customLogger,
         }),
       ).toThrow(messages.errors.invalidLoggerMethod('warn'))
@@ -136,7 +136,7 @@ describe('WanchainMaskInpageProvider: Miscellanea', () => {
       }
 
       expect(
-        () => new WanchainMaskInpageProvider(stream, {
+        () => new WanMaskInpageProvider(stream, {
           logger: customLogger,
         }),
       ).toThrow(messages.errors.invalidLoggerMethod('warn'))
@@ -147,7 +147,7 @@ describe('WanchainMaskInpageProvider: Miscellanea', () => {
     it('returns isConnected state', () => {
 
       jest.useFakeTimers()
-      const provider = new WanchainMaskInpageProvider(new MockDuplexStream())
+      const provider = new WanMaskInpageProvider(new MockDuplexStream())
       provider.autoRefreshOnNetworkChange = false
 
       expect(

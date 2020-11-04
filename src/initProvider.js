@@ -1,14 +1,14 @@
-const WanchainMaskInpageProvider = require('./WanchainMaskInpageProvider')
+const WanMaskInpageProvider = require('./WanMaskInpageProvider')
 
 /**
- * Initializes a WanchainMaskInpageProvider and (optionally) assigns it as window.wanchain.
+ * Initializes a WanMaskInpageProvider and (optionally) assigns it as window.wanchain.
  *
  * @param {Object} options - An options bag.
  * @param {Object} options.connectionStream - A Node.js stream.
  * @param {number} options.maxEventListeners - The maximum number of event listeners.
  * @param {boolean} options.shouldSendMetadata - Whether the provider should send page metadata.
  * @param {boolean} options.shouldSetOnWindow - Whether the provider should be set as window.wanchain
- * @returns {WanchainMaskInpageProvider | Proxy} The initialized provider (whether set or not).
+ * @returns {WanMaskInpageProvider | Proxy} The initialized provider (whether set or not).
  */
 function initProvider ({
   connectionStream,
@@ -17,7 +17,7 @@ function initProvider ({
   shouldSetOnWindow = true,
 } = {}) {
 
-  let provider = new WanchainMaskInpageProvider(
+  let provider = new WanMaskInpageProvider(
     connectionStream, { shouldSendMetadata, maxEventListeners },
   )
 
@@ -36,7 +36,7 @@ function initProvider ({
  * Sets the given provider instance as window.wanchain and dispatches the
  * 'wanchain#initialized' event on window.
  *
- * @param {WanchainMaskInpageProvider} providerInstance - The provider instance.
+ * @param {WanMaskInpageProvider} providerInstance - The provider instance.
  */
 function setGlobalProvider (providerInstance) {
   window.wanchain = providerInstance

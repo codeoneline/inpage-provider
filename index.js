@@ -1,8 +1,8 @@
-const WanchainMaskInpageProvider = require('./src/WanchainMaskInpageProvider')
+const WanMaskInpageProvider = require('./src/WanMaskInpageProvider')
 const { initProvider, setGlobalProvider } = require('./src/initProvider')
 
 module.exports = {
-  WanchainMaskInpageProvider,
+  WanMaskInpageProvider,
   initProvider,
   setGlobalProvider,
 }
