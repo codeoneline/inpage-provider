@@ -400,9 +400,7 @@ module.exports = class WanMaskInpageProvider extends SafeEventEmitter {
         payload.method === 'eth_accounts' ||
         payload.method === 'eth_requestAccounts'
       ) {
-        if (!isConnected()) {
-          this.enable()
-        }
+
         // handle accounts changing
         cb = (err, res) => {
           this._handleAccountsChanged(
