@@ -241,7 +241,7 @@ module.exports = class WanMaskInpageProvider extends SafeEventEmitter {
     // TODO:deprecation:remove
     // if true, WanchainMask reloads the page if window.web3 has been accessed
     /** @deprecated */
-    this.autoRefreshOnNetworkChange = true
+    this.autoRefreshOnNetworkChange = false
 
     // TODO:deprecation:remove
     // wait a second to attempt to send this, so that the warning can be silenced
@@ -400,7 +400,9 @@ module.exports = class WanMaskInpageProvider extends SafeEventEmitter {
         payload.method === 'eth_accounts' ||
         payload.method === 'eth_requestAccounts'
       ) {
-
+        if (!isConnected()) {
+          this.enable()
+        }
         // handle accounts changing
         cb = (err, res) => {
           this._handleAccountsChanged(
